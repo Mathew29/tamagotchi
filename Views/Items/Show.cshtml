@@ -1,0 +1,35 @@
+<h1>This is Tamagotchi: </h1>
+ @if(Model.GetHappiness() > 0)
+{
+<h2>@Model.GetName()</h2>
+<ul>
+<li>Happiness:@Model.GetHappiness()</li>
+<li>Poop:@Model.GetPoop()</li>
+<li>Rest:@Model.GetRest()</li>
+<li>Hunger:@Model.GetHunger()</li>
+<li>Food:@Model.GetFood()</li>
+<li>Attention:@Model.GetAttention()</li>
+</ul>
+
+<form action="/items/@Model.GetId()" method="post">
+</form>
+
+<form action="/items/@Model.GetId()/feed" method="post">
+  <button type="submit" class="btn btn-dark" name="feed">Feed Tamagotchi</button>
+</form>
+<form action="/items/@Model.GetId()/rest" method="post">
+  <button type="submit" class="btn btn-danger" name="rest">Put to Rest Tamagotchi</button>
+</form>
+<form action="/items/@Model.GetId()/attention" method="post">
+  <button type="submit" class="btn btn-light" name="attention">Give Tamagotchi attention</button>
+</form>
+<form action="/items/@Model.GetId()/poop" method="post">
+  <button type="submit" class="btn btn-warning" name="poop">Clean Poop of Tamagotchi</button>
+</form>
+
+ }else{
+  <h1>YOUR TAMAGOTCHI DIED, YOU ARE A TERRIBLE PET OWNER</h1>
+}
+
+<a href='/items/new'>Make a new Tamagotchi!</a><br>
+<a href='/items'>View all Tamagotchi</a>
